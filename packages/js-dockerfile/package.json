@@ -1,0 +1,32 @@
+{
+	"name": "js-dockerfile",
+	"version": "0.0.0",
+	"description": "A JavaScript API for creating Dockerfiles.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/leondreamed/js-dockerfile.git"
+	},
+	"homepage": "https://github.com/leondreamed/js-dockerfile#readme",
+	"author": {
+		"name": "Leon Si",
+		"email": "leon@leondreamed.com",
+		"url": "https://leondreamed.com"
+	},
+	"type": "module",
+	"exports": "./src/index.ts",
+	"scripts": {
+		"build": "ts-node ./scripts/build.ts",
+		"start": "ts-node ./src/index.ts"
+	},
+	"devDependencies": {
+		"execa": "^6.1.0",
+		"vitest": "latest"
+	},
+	"dependencies": {
+		"type-fest": "^3.3.0"
+	},
+	"publishConfig": {
+		"directory": "dist"
+	}
+}

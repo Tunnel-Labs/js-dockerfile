@@ -1,0 +1,12 @@
+{
+  "pipeline": {
+		"typecheck": {
+			"outputs": ["**/dist"]
+		},
+    "lint": {
+      "outputs": [
+				"**/.eslintcache"
+			]
+    }
+  }
+}
