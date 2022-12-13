@@ -5,11 +5,11 @@ importers:
   .:
     specifiers:
       '@types/node': ^18.11.13
-      lionconfig: ^2.1.5
+      lionconfig: ^2.1.6
       typescript: ^4.9.4
     devDependencies:
       '@types/node': 18.11.13
-      lionconfig: 2.1.5_typescript@4.9.4
+      lionconfig: 2.1.6_typescript@4.9.4
       typescript: 4.9.4
 
   packages/js-dockerfile:
@@ -5729,6 +5729,85 @@ packages:
       package-json: 8.1.0
     dev: true
 
+  /lefthook-darwin-arm64/1.2.4:
+    resolution: {integrity: sha512-c3pzGWT6YuStgH0BWzlOpghJSiQTDvoXbjOmlolBKbN46KSLwclbVbeSpp2vfAtuQvGP1RIo02aMYngsVjX5DA==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-darwin-x64/1.2.4:
+    resolution: {integrity: sha512-7HrmSd9GR3pe2bKq0She2pvdGLjaB2KKlREDqbREfe+vWrC+WqzeV/xUncKk+8mz6BCHyPq0XfuZqsztluXN5w==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-freebsd-arm64/1.2.4:
+    resolution: {integrity: sha512-VkUoz3xrW70XJ82y3vAz1vfZOdUCe/8z4W2h3YMIBaR/Ovrt9PwtWHtSWEM5LrTBkgi1BbIP7hZtu7HbMw/siQ==}
+    cpu: [arm64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-freebsd-x64/1.2.4:
+    resolution: {integrity: sha512-e/ycIWt9WB3T/8KGy1aXY16AbVRGYXI4kw7jDp+GT5Lqile609mA9HCPubm4uPQK5PEtvYTB8R3c19LCDGqyeQ==}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-linux-arm64/1.2.4:
+    resolution: {integrity: sha512-GDpfnt71Tx3+H14RcZr294of+ZTSANZ8v7dp86fATc2odZnvRCi31mGb2b0SjWGTvnsD9fnXcdvhOPsG2/+qIA==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-linux-x64/1.2.4:
+    resolution: {integrity: sha512-wNVsG0oOZVYqK5RIYZgY7aYPCoVaWkx4SGpTQiPrgiVeXRm2AgY/+U7Pv6Nim9KZppQXemNjaA83dA0DvOOufg==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-windows-arm64/1.2.4:
+    resolution: {integrity: sha512-t2xdxZQdbEYSlAaCwxJVphwmz1XQI9guGVkTfZEEbBswzNvDAUBr+w2l/ySDvA8fLrIyQI3D2czMQSslhAXqAQ==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook-windows-x64/1.2.4:
+    resolution: {integrity: sha512-0K2UeSEAdMXDNHF8FSjGS/ZlAhfMDQ8lHSkBnGXF+68W7Uo62X27yDAJHKAMDjmQKh45V7NuDaVj8dq+m0mnwQ==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /lefthook/1.2.4:
+    resolution: {integrity: sha512-DQOqqub4WmRFDsiTBye5GWy2TIsGdtJmkOrkK3zYBmUWoD7nuHodtMI4+JgrDgHCC1crB8LV/pMSaQOo2dsOHA==}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.2.4
+      lefthook-darwin-x64: 1.2.4
+      lefthook-freebsd-arm64: 1.2.4
+      lefthook-freebsd-x64: 1.2.4
+      lefthook-linux-arm64: 1.2.4
+      lefthook-linux-x64: 1.2.4
+      lefthook-windows-arm64: 1.2.4
+      lefthook-windows-x64: 1.2.4
+    dev: true
+
   /levn/0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -5790,8 +5869,8 @@ packages:
       pkg-up: 4.0.0
     dev: true
 
-  /lionconfig/2.1.5_typescript@4.9.4:
-    resolution: {integrity: sha512-1Nf2VdxtQ6z2YNKjO60k+ZCWmk4RkDUys7rNnFbG28AF8twHbJ9tSnugzzttL2poKl/MkjW9cLt8rfhTSOGbtA==}
+  /lionconfig/2.1.6_typescript@4.9.4:
+    resolution: {integrity: sha512-pCs8QJtB/JmdGcplEJZ/4zcNNTbGVx8oiphx3ormvQuaw1Of9TeARetNLQfeke1PZjGLQBsCwYfcFJW9APOFPQ==}
     hasBin: true
     dependencies:
       '@commitlint/cli': 17.3.0_@swc+core@1.3.22
@@ -5842,6 +5921,7 @@ packages:
       import-meta-resolve: 2.2.0
       is-ci: 3.0.1
       is-path-inside: 4.0.0
+      lefthook: 1.2.4
       lint-staged: 13.1.0
       lion-utils: 0.1.11
       lionp: 1.0.32
@@ -5866,7 +5946,7 @@ packages:
       type-fest: 3.3.0
       update-notifier: 6.0.2
       webpack: /ignoredep/25.9999.0
-      xo: 0.53.1_ignoredep@25.9999.0
+      xo: 0.53.1_4cknsimqa4jzrbbqaaw46vqxhe
     transitivePeerDependencies:
       - '@swc/wasm'
       - bluebird
@@ -8990,7 +9070,7 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /xo/0.53.1_ignoredep@25.9999.0:
+  /xo/0.53.1_4cknsimqa4jzrbbqaaw46vqxhe:
     resolution: {integrity: sha512-/2R8SPehv1UhiIqJ9uSvrAjslcoygICNsUlEb/Zf2V6rMtr7YCoggc6hlt6b/kbncpR989Roqt6AvEO779dFxw==}
     engines: {node: '>=14.16'}
     hasBin: true
@@ -9001,15 +9081,12 @@ packages:
         optional: true
     dependencies:
       '@eslint/eslintrc': 1.3.3
-      '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
-      '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
       arrify: 3.0.0
       cosmiconfig: 7.1.0
       define-lazy-prop: 3.0.0
       eslint: 8.29.0
       eslint-config-prettier: 8.5.0_eslint@8.29.0
       eslint-config-xo: 0.43.1_eslint@8.29.0
-      eslint-config-xo-typescript: 0.55.1_dah5anvloz54yyoweisiy37zze
       eslint-formatter-pretty: 4.1.0
       eslint-import-resolver-webpack: 0.13.2_vaezxk2hyfnncf5nd77py7moyy
       eslint-plugin-ava: 13.2.0_eslint@8.29.0
@@ -9038,6 +9115,7 @@ packages:
       typescript: 4.9.4
       webpack: /ignoredep/25.9999.0
     transitivePeerDependencies:
+      - '@typescript-eslint/parser'
       - eslint-import-resolver-typescript
       - supports-color
     dev: true
