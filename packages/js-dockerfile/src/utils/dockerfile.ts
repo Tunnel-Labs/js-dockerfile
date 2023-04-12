@@ -5,7 +5,7 @@ import { DockerCommands } from '~/utils/commands/_class.js'
 export async function createDockerfile(
 	callback: (d: DockerCommands) => Promisable<void>
 ): Promise<string> {
-	const dockerCommandsInstance = new DockerCommands()
+	const dockerCommandsInstance = DockerCommands.create()
 	await callback(dockerCommandsInstance)
 	return (
 		'# syntax=docker/dockerfile:1\n' +
