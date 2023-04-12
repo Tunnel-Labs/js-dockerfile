@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 
-import type * as commands from './_commands.js'
+import * as commands from './_commands.js'
 
 class DockerCommandsClass {
 	static create() {
 		const dockerCommands = new DockerCommandsClass() as DockerCommandsClass &
 			typeof commands
-		Object.assign(this, dockerCommands)
+		Object.assign(dockerCommands, commands)
 		return dockerCommands
 	}
 
