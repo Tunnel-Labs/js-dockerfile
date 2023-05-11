@@ -1,54 +1,60 @@
-import { type DockerCommands } from '~/utils/commands/_class.js'
+import { type DockerCommands } from "~/utils/commands/_class.js";
 
 interface CopyCommandOptions {
-	chown?: string
-	chmod?: string
-	from?: string
+  chown?: string;
+  chmod?: string;
+  from?: string;
 }
 
 export function COPY(
-	this: DockerCommands,
-	files: string[],
-	options?: CopyCommandOptions
-): void
+  this: DockerCommands,
+  files: string[],
+  options?: CopyCommandOptions
+): void;
 export function COPY(
-	this: DockerCommands,
-	src: string,
-	dest?: string,
-	maybeOptions?: CopyCommandOptions
-): void
+  this: DockerCommands,
+  src: string,
+  dest?: string,
+  maybeOptions?: CopyCommandOptions
+): void;
 export function COPY(
-	this: DockerCommands,
-	filesOrSrc: string[] | string,
-	destOrOptions?: string | CopyCommandOptions,
-	maybeOptions?: CopyCommandOptions
+  this: DockerCommands,
+  filesOrSrc: string[] | string,
+  destOrOptions?: string | CopyCommandOptions,
+  maybeOptions?: CopyCommandOptions
 ): void {
-	if (Array.isArray(filesOrSrc)) {
-		const files = filesOrSrc
-		for (const file of files) {
-			this.COPY(file, file, maybeOptions)
-		}
+  if (Array.isArray(filesOrSrc)) {
+    const files = filesOrSrc;
+    if (typeof destOrOptions === "string") {
+      throw new Error(
+        "COPY command does not support multiple files with a single destination"
+      );
+    }
 
-		return
-	}
+    for (const file of files) {
+      this.COPY(file, file, destOrOptions);
+    }
 
-	const options =
-		(typeof destOrOptions === 'object' ? destOrOptions : maybeOptions) ?? {}
-	const dest = typeof destOrOptions === 'string' ? destOrOptions : filesOrSrc
+    return;
+  }
 
-	const flags = []
-	if (options.chown !== undefined) {
-		flags.push(`--chown=${options.chown}`)
-	}
+  const options =
+    (typeof destOrOptions === "object" ? destOrOptions : maybeOptions) ?? {};
+  const dest = typeof destOrOptions === "string" ? destOrOptions : filesOrSrc;
 
-	if (options.chmod !== undefined) {
-		flags.push(`--chmod=${options.chmod}`)
-	}
+  const flags = [];
+  if (options.chown !== undefined) {
+    flags.push(`--chown=${options.chown}`);
+  }
 
-	if (options.from !== undefined) {
-		flags.push(`--from=${options.from}`)
-	}
+  if (options.chmod !== undefined) {
+    flags.push(`--chmod=${options.chmod}`);
+  }
 
-	const src = filesOrSrc
-	this.command(`COPY ${flags.join(' ')} ${src} ${dest}`)
+  if (options.from !== undefined) {
+    flags.push(`--from=${options.from}`);
+  }
+
+  const src = filesOrSrc;
+  this.command(`COPY ${flags.join(" ")} ${src} ${dest}`);
 }
