@@ -7,9 +7,9 @@ interface FromOptions {
 export function FROM(
   this: Dockerfile,
   from: string,
-  options: FromOptions
+  options?: FromOptions
 ): string {
-  if (options.as !== undefined) {
+  if (options?.as !== undefined) {
     return this.instruction("FROM", `${from} AS ${options.as}`);
   } else {
     return this.instruction("FROM", from);

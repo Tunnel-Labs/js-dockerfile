@@ -8,6 +8,7 @@ export function comment(this: Dockerfile, commentString: string): string {
     commentLine = "# " + commentString;
   }
 
-  this.document += commentLine;
+  this.document += commentLine + "\n";
+
   return commentLine;
 }

@@ -4,6 +4,7 @@ interface CopyCommandOptions {
   chown?: string;
   chmod?: string;
   from?: string;
+  link?: boolean;
 }
 
 export function COPY(
@@ -55,6 +56,10 @@ export function COPY(
 
   if (options.from !== undefined) {
     flags.push(`--from=${options.from}`);
+  }
+
+  if (options.link !== undefined) {
+    flags.push(`--link=${options.link}`);
   }
 
   const src = filesOrSrc;
