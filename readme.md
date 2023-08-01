@@ -16,7 +16,7 @@ Then, import it and use it in your project like the following example:
 import fs from 'node:fs'
 import { Dockerfile } from 'js-dockerfile'
 
-const d = new Dockerfile()
+const d = Dockerfile.create()
 const nodeVersion = 16
 d.FROM(`node:${nodeVersion} AS base`)
 d.RUN('apt-get update')
