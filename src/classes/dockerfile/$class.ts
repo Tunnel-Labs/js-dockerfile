@@ -3,15 +3,16 @@
 import * as instructions from "~/instructions/*.js";
 
 class DockerfileClass {
-  private constructor() {}
+  private constructor() {
+    Object.assign(this, instructions);
+  }
 
   static create() {
     const self = new DockerfileClass() as Dockerfile;
-    Object.assign(self, instructions);
     return self;
   }
 
-  private document = "";
+  document = "";
 
   toString() {
     return this.document;
