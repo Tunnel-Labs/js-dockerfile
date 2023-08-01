@@ -1,6 +1,6 @@
 import { type Promisable } from 'type-fest'
 
-import { DockerCommands } from '~/utils/commands/_class.js'
+import { DockerCommands } from '~/commands/$class.js'
 
 export async function dockerCommands(
 	callback: (d: DockerCommands) => Promisable<void>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 
-import * as commands from './_commands.js'
+import * as commands from './$commands.js'
 
 class DockerCommandsClass {
 	static create() {

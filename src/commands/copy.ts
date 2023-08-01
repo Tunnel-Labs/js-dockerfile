@@ -1,4 +1,4 @@
-import { type DockerCommands } from "~/utils/commands/_class.js";
+import { type DockerCommands } from "~/commands/$class.js";
 
 interface CopyCommandOptions {
   chown?: string;
@@ -10,19 +10,19 @@ export function COPY(
   this: DockerCommands,
   files: string[],
   options?: CopyCommandOptions
-): void;
+): string;
 export function COPY(
   this: DockerCommands,
   src: string,
   dest?: string,
   maybeOptions?: CopyCommandOptions
-): void;
+): string;
 export function COPY(
   this: DockerCommands,
   filesOrSrc: string[] | string,
   destOrOptions?: string | CopyCommandOptions,
   maybeOptions?: CopyCommandOptions
-): void {
+): string {
   if (Array.isArray(filesOrSrc)) {
     const files = filesOrSrc;
     if (typeof destOrOptions === "string") {
@@ -31,11 +31,13 @@ export function COPY(
       );
     }
 
+    let copyString = "";
+
     for (const file of files) {
-      this.COPY(file, file, destOrOptions);
+      copyString += this.COPY(file, file, destOrOptions);
     }
 
-    return;
+    return copyString;
   }
 
   const options =
@@ -56,5 +58,5 @@ export function COPY(
   }
 
   const src = filesOrSrc;
-  this.command(`COPY ${flags.join(" ")} ${src} ${dest}`);
+  return this.command(`COPY ${flags.join(" ")} ${src} ${dest}`);
 }
