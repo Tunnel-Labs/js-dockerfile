@@ -1,9 +1,9 @@
-import { type DockerCommands } from "~/commands/$class.js";
+import type { Dockerfile } from "~/classes/*.js";
 
 export function RUN(
-  this: DockerCommands,
+  this: Dockerfile,
   commandOrCommands: string | string[]
 ): string {
   const command = [commandOrCommands].flat().join(" ");
-  return this.command(`RUN ${command}`);
+  return this.instruction("RUN", command);
 }

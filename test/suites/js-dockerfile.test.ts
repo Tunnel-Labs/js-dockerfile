@@ -1,5 +1,8 @@
-import { test } from 'vitest'
+import { test, expect } from "vitest";
+import { Dockerfile } from "~/index.js";
 
-test('my test', () => {
-	// Your tests go here
-})
+test("js-dockerfile", () => {
+  const d = Dockerfile.create();
+  d.ENV("foo", "bar");
+  expect(d.toString()).toEqual("ENV foo=bar\n");
+});

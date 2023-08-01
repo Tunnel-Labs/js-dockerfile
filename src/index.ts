@@ -1,2 +1,1 @@
-export { DockerCommands } from './commands/$class.js'
-export { createDockerfile } from './utils/dockerfile.js'
+export { Dockerfile } from "./classes/*.js";

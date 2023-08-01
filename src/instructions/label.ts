@@ -1,13 +1,13 @@
-import { type DockerCommands } from "~/commands/$class.js";
+import type { Dockerfile } from "~/classes/*.js";
 
 export function LABEL(
-  this: DockerCommands,
+  this: Dockerfile,
   label: string,
   value: string
 ): string;
-export function LABEL(this: DockerCommands, labels: [string, string][]): string;
+export function LABEL(this: Dockerfile, labels: [string, string][]): string;
 export function LABEL(
-  this: DockerCommands,
+  this: Dockerfile,
   labelOrLabels: string | [string, string][],
   value?: string
 ): string {
@@ -23,6 +23,6 @@ export function LABEL(
     return this.command(labelsCommand);
   } else {
     const label = labelOrLabels;
-    return this.command(`LABEL ${label}=${value}`);
+    return this.instruction('LABEL', `${label}=${value}`);
   }
 }
