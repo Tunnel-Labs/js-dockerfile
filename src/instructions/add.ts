@@ -1,29 +1,35 @@
-import type { Dockerfile } from "~/classes/*.js";
+import { Dockerfile } from "~/index.js";
 
-interface CopyInstructionOptions {
+interface AddInstructionOptions {
+  checksum?: string;
+  keepGitDir?: boolean;
   chown?: string;
   chmod?: string;
-  from?: string;
   link?: boolean;
 }
 
-export function COPY(
+export function ADD(
   this: Dockerfile,
   src: string | string[],
   dest: string,
-  options?: CopyInstructionOptions
+  options?: AddInstructionOptions
 ): string {
   const flags = [];
+
+  if (options?.checksum !== undefined) {
+    flags.push(`--checksum=${options.checksum}`);
+  }
+
+  if (options?.keepGitDir !== undefined) {
+    flags.push(`--keep-git-dir=${options.keepGitDir}`);
+  }
+
   if (options?.chown !== undefined) {
     flags.push(`--chown=${options.chown}`);
   }
 
   if (options?.chmod !== undefined) {
     flags.push(`--chmod=${options.chmod}`);
-  }
-
-  if (options?.from !== undefined) {
-    flags.push(`--from=${options.from}`);
   }
 
   if (options?.link !== undefined) {
@@ -36,10 +42,10 @@ export function COPY(
 
   if (hasWhitespace) {
     return this.instruction(
-      "COPY",
+      "ADD",
       `${flags.join(" ")} ${this.toJsonArray(paths)}`
     );
   } else {
-    return this.instruction("COPY", `${flags.join(" ")} ${paths.join(" ")}`);
+    return this.instruction("ADD", `${flags.join(" ")} ${paths.join(" ")}`);
   }
 }

@@ -1,13 +1,13 @@
 import type { Dockerfile } from "~/classes/*.js";
 
-interface FromOptions {
+interface FromInstructionOptions {
   as?: string;
 }
 
 export function FROM(
   this: Dockerfile,
   from: string,
-  options?: FromOptions
+  options?: FromInstructionOptions
 ): string {
   if (options?.as !== undefined) {
     return this.instruction("FROM", `${from} AS ${options.as}`);
