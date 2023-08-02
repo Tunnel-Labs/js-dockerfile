@@ -2,6 +2,7 @@ import type { Dockerfile } from "~/classes/*.js";
 
 interface FromInstructionOptions {
   as?: string;
+  platform?: string;
 }
 
 export function FROM(
@@ -9,9 +10,18 @@ export function FROM(
   from: string,
   options?: FromInstructionOptions
 ): string {
+  const flags: string[] = [];
+
+  if (options?.platform !== undefined) {
+    flags.push(`--platform=${options.platform}`);
+  }
+
   if (options?.as !== undefined) {
-    return this.instruction("FROM", `${from} AS ${options.as}`);
+    return this.instruction(
+      "FROM",
+      `${flags.join(" ")} ${from} AS ${options.as}`
+    );
   } else {
-    return this.instruction("FROM", from);
+    return this.instruction("FROM", `${flags.join(" ")} ${from}`);
   }
 }
