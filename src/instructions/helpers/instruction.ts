@@ -1,13 +1,13 @@
-import { Dockerfile } from "~/classes/*.js";
+import { type Dockerfile } from '~/classes/*.js'
 
 export function instruction(
-  this: Dockerfile,
-  instruction: string,
-  args: string | number | string[]
+	this: Dockerfile,
+	instruction: string,
+	args: string | number | string[]
 ) {
-  if (Array.isArray(args)) {
-    args = "[" + args.map((arg) => JSON.stringify(arg)).join(", ") + "]";
-  }
+	if (Array.isArray(args)) {
+		args = '[' + args.map((arg) => JSON.stringify(arg)).join(', ') + ']'
+	}
 
-  return this.command(`${instruction} ${args}`);
+	return this.command(`${instruction} ${args}`)
 }

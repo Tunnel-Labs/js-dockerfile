@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config';
-import { join } from 'desm';
+import { join } from 'desm'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
 	resolve: {
@@ -8,4 +8,4 @@ export default defineConfig({
 			'~test': join(import.meta.url, 'test'),
 		},
 	},
-});
+})

@@ -1,5 +1,5 @@
-import type { Dockerfile } from "~/classes/*.js";
+import type { Dockerfile } from '~/classes/*.js'
 
 export function VOLUME(this: Dockerfile, volumes: string | string[]) {
-  return this.instruction("VOLUME", volumes);
+	return this.instruction('VOLUME', volumes)
 }

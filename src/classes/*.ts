@@ -1,1 +1,1 @@
-export * from "./dockerfile/$class.js";
+export * from './dockerfile/$class.js'

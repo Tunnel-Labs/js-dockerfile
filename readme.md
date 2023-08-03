@@ -14,6 +14,7 @@ Then, import it and use it in your project like the following example:
 
 ```js
 import fs from 'node:fs'
+
 import { Dockerfile } from 'js-dockerfile'
 
 const d = Dockerfile.create()

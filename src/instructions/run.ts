@@ -1,4 +1,4 @@
-import type { Dockerfile } from "~/classes/*.js";
+import type { Dockerfile } from '~/classes/*.js'
 
 // prettier-ignore
 interface RunInstructionOptions {
@@ -119,30 +119,31 @@ interface RunInstructionOptions {
 }
 
 export function RUN(
-  this: Dockerfile,
-  commandOrCommands: string | string[],
-  options?: RunInstructionOptions
+	this: Dockerfile,
+	commandOrCommands: string | string[],
+	options?: RunInstructionOptions
 ): string {
-  const command = [commandOrCommands].flat().join(" ");
+	const command = [commandOrCommands].flat().join(' ')
 
-  const flags: string[] = [];
+	const flags: string[] = []
 
-  if (options?.mount !== undefined) {
-    let mountFlag = `--mount=${options.mount.type}`;
-    for (const [option, value] of Object.entries(options.mount)) {
-      if (option === "type") continue;
-      mountFlag += `,${option}=${value}`;
-    }
-    flags.push(mountFlag);
-  }
+	if (options?.mount !== undefined) {
+		let mountFlag = `--mount=${options.mount.type}`
+		for (const [option, value] of Object.entries(options.mount)) {
+			if (option === 'type') continue
+			mountFlag += `,${option}=${String(value)}`
+		}
 
-  if (options?.network !== undefined) {
-    flags.push(`--network=${options.network}`);
-  }
+		flags.push(mountFlag)
+	}
 
-  if (options?.security !== undefined) {
-    flags.push(`--security=${options.security}`);
-  }
+	if (options?.network !== undefined) {
+		flags.push(`--network=${options.network}`)
+	}
 
-  return this.instruction("RUN", `${flags.join(" ")} ${command}`);
+	if (options?.security !== undefined) {
+		flags.push(`--security=${options.security}`)
+	}
+
+	return this.instruction('RUN', `${flags.join(' ')} ${command}`)
 }
