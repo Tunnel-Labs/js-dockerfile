@@ -10,18 +10,15 @@ export function FROM(
 	from: string,
 	options?: FromInstructionOptions
 ): string {
-	const flags: string[] = []
+	const flags: Record<string, string> = {}
 
 	if (options?.platform !== undefined) {
-		flags.push(`--platform=${options.platform}`)
+		flags.platform = options.platform
 	}
 
 	if (options?.as === undefined) {
-		return this.instruction('FROM', `${flags.join(' ')} ${from}`)
+		return this.instruction('FROM', from, flags)
 	} else {
-		return this.instruction(
-			'FROM',
-			`${flags.join(' ')} ${from} AS ${options.as}`
-		)
+		return this.instruction('FROM', `${from} AS ${options.as}`, flags)
 	}
 }

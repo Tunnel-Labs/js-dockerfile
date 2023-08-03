@@ -24,27 +24,27 @@ export function HEALTHCHECK(
 	if (type === 'NONE') {
 		return this.instruction('HEALTHCHECK', 'NONE')
 	} else {
-		const flags: string[] = []
+		const flags: Record<string, string> = {}
 		if (options?.interval) {
-			flags.push(`--interval=${options.interval}`)
+			flags.interval = options.interval
 		}
 
 		if (options?.timeout) {
-			flags.push(`--timeout=${options.timeout}`)
+			flags.timeout = options.timeout
 		}
 
 		if (options?.startPeriod) {
-			flags.push(`--start-period=${options.startPeriod}`)
+			flags['start-period'] = options.startPeriod
 		}
 
 		if (options?.startInterval) {
-			flags.push(`--start-interval=${options.startInterval}`)
+			flags['start-interval'] = options.startInterval
 		}
 
 		if (options?.retries) {
-			flags.push(`--retries=${options.retries}`)
+			flags.retries = options.retries
 		}
 
-		return this.instruction('HEALTHCHECK', `${flags.join(' ')} CMD ${command!}`)
+		return this.instruction('HEALTHCHECK', `CMD ${command!}`, flags)
 	}
 }

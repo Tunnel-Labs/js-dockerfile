@@ -14,26 +14,26 @@ export function ADD(
 	dest: string,
 	options?: AddInstructionOptions
 ): string {
-	const flags = []
+	const flags: Record<string, string> = {}
 
 	if (options?.checksum !== undefined) {
-		flags.push(`--checksum=${options.checksum}`)
+		flags.checksum = options.checksum
 	}
 
 	if (options?.keepGitDir !== undefined) {
-		flags.push(`--keep-git-dir=${String(options.keepGitDir)}`)
+		flags['keep-git-dir'] = String(options.keepGitDir)
 	}
 
 	if (options?.chown !== undefined) {
-		flags.push(`--chown=${options.chown}`)
+		flags.chown = options.chown
 	}
 
 	if (options?.chmod !== undefined) {
-		flags.push(`--chmod=${options.chmod}`)
+		flags.chmod = options.chmod
 	}
 
 	if (options?.link !== undefined) {
-		flags.push(`--link=${String(options.link)}`)
+		flags.link = String(options.link)
 	}
 
 	// If any path contains whitespace
@@ -41,11 +41,8 @@ export function ADD(
 	const hasWhitespace = paths.some((path) => /\s/.test(path))
 
 	if (hasWhitespace) {
-		return this.instruction(
-			'ADD',
-			`${flags.join(' ')} ${this.toJsonArray(paths)}`
-		)
+		return this.instruction('ADD', paths, flags)
 	} else {
-		return this.instruction('ADD', `${flags.join(' ')} ${paths.join(' ')}`)
+		return this.instruction('ADD', paths, flags)
 	}
 }

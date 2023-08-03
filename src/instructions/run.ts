@@ -125,25 +125,25 @@ export function RUN(
 ): string {
 	const command = [commandOrCommands].flat().join(' ')
 
-	const flags: string[] = []
+	const flags: Record<string, string> = {}
 
 	if (options?.mount !== undefined) {
-		let mountFlag = `--mount=${options.mount.type}`
+		let mountFlag = `${options.mount.type}`
 		for (const [option, value] of Object.entries(options.mount)) {
 			if (option === 'type') continue
 			mountFlag += `,${option}=${String(value)}`
 		}
 
-		flags.push(mountFlag)
+		flags.mount = mountFlag
 	}
 
 	if (options?.network !== undefined) {
-		flags.push(`--network=${options.network}`)
+		flags.network = options.network
 	}
 
 	if (options?.security !== undefined) {
-		flags.push(`--security=${options.security}`)
+		flags.security = options.security
 	}
 
-	return this.instruction('RUN', `${flags.join(' ')} ${command}`)
+	return this.instruction('RUN', command, flags)
 }

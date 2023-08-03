@@ -13,21 +13,21 @@ export function COPY(
 	dest: string,
 	options?: CopyInstructionOptions
 ): string {
-	const flags = []
+	const flags: Record<string, string> = {}
 	if (options?.chown !== undefined) {
-		flags.push(`--chown=${options.chown}`)
+		flags.chown = options.chown
 	}
 
 	if (options?.chmod !== undefined) {
-		flags.push(`--chmod=${options.chmod}`)
+		flags.chmod = options.chmod
 	}
 
 	if (options?.from !== undefined) {
-		flags.push(`--from=${options.from}`)
+		flags.from = options.from
 	}
 
 	if (options?.link !== undefined) {
-		flags.push(`--link=${String(options.link)}`)
+		flags.link = String(options.link)
 	}
 
 	// If any path contains whitespace
@@ -35,11 +35,8 @@ export function COPY(
 	const hasWhitespace = paths.some((path) => /\s/.test(path))
 
 	if (hasWhitespace) {
-		return this.instruction(
-			'COPY',
-			`${flags.join(' ')} ${this.toJsonArray(paths)}`
-		)
+		return this.instruction('COPY', paths, flags)
 	} else {
-		return this.instruction('COPY', `${flags.join(' ')} ${paths.join(' ')}`)
+		return this.instruction('COPY', paths, flags)
 	}
 }
