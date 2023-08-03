@@ -32,11 +32,6 @@ export function COPY(
 
 	// If any path contains whitespace
 	const paths = [...[src].flat(), dest]
-	const hasWhitespace = paths.some((path) => /\s/.test(path))
 
-	if (hasWhitespace) {
-		return this.instruction('COPY', paths, flags)
-	} else {
-		return this.instruction('COPY', paths, flags)
-	}
+	return this.instruction('COPY', paths, flags)
 }

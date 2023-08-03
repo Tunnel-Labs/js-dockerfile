@@ -19,6 +19,6 @@ export function LABEL(
 		return this.command(labelsCommand)
 	} else {
 		const label = labelOrLabels
-		return this.instruction('LABEL', `${label}=${value!}`)
+		return this.instruction('LABEL', `${label}=${JSON.stringify(value)}`)
 	}
 }
