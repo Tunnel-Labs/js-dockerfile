@@ -1,4 +1,4 @@
-import type { Dockerfile } from '~/classes/*.js'
+import type { Dockerfile } from '~/classes/index.js'
 
 export function directive(this: Dockerfile, directiveString: string): string {
 	let directiveLine: string

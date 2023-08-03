@@ -1,4 +1,4 @@
-import type { Dockerfile } from '~/classes/*.js'
+import type { Dockerfile } from '~/classes/index.js'
 
 export function USER(this: Dockerfile, uid: string, gid?: string): string {
 	if (gid === undefined) {

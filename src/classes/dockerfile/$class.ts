@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 
-import * as instructions from '~/instructions/*.js'
+import * as instructions from '~/instructions/index.js'
 
 class DockerfileClass {
 	static create() {
