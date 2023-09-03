@@ -1,1 +1,1 @@
-export { Dockerfile } from './classes/index.js'
+export { Dockerfile } from './classes/$.js'

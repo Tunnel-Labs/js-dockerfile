@@ -1,4 +1,4 @@
-import type { Dockerfile } from '~/classes/index.js'
+import type { Dockerfile } from '~/classes/$.js'
 
 /**
 	@param port - Might be a string in case it's an environment variable

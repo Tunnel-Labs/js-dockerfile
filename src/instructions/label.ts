@@ -1,4 +1,4 @@
-import type { Dockerfile } from '~/classes/index.js'
+import type { Dockerfile } from '~/classes/$.js'
 
 export function LABEL(this: Dockerfile, label: string, value: string): string
 export function LABEL(this: Dockerfile, labels: Array<[string, string]>): string

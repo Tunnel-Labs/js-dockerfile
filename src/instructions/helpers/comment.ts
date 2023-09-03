@@ -1,4 +1,4 @@
-import type { Dockerfile } from '~/classes/index.js'
+import type { Dockerfile } from '~/classes/$.js'
 
 export function comment(this: Dockerfile, commentString: string): string {
 	let commentLine: string
